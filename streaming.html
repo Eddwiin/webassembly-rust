@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Streaming</title>
+    <script type="module">
+        import init, { add_nums } from "./pkg/webassembly_rust.js";
+        await init();
+        window.add_nums = add_nums;
+    </script>
+    <script>
+        function run_wasm() {
+            const a = document.getElementById("a").value;
+            const sum = add_nums(a, 10);
+            const ret = document.getElementById("ret");
+
+            ret.innerHTML += `${a} => ${sum}<br />` ;
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello Streaming WebAssembly</h1>
+
+    <input type="number" id="a" />
+    <button onclick="run_wasm()">Trigger</button>
+    <p id="ret"></p>
+</body>
+</html>

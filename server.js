@@ -5,7 +5,7 @@ const path = require("path");
 const PORT = 8080;
 
 http.createServer((req, res) => {
-    let filePath = path.join(__dirname, req.url === "/" ? "index.html" : req.url);
+    let filePath = path.join(__dirname, req.url === "/" ? "streaming.html" : req.url);
     let ext = path.extname(filePath);
 
     // MIME types
